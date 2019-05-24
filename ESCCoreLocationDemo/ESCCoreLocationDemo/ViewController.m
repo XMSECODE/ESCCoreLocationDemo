@@ -18,7 +18,7 @@
 #   define DLog(...)
 #endif
 
-@interface ViewController () <ESCLocationManagerDelegate>
+@interface ViewController () <ESCLocationManagerDelegate, MKMapViewDelegate>
 
 @property(nonatomic,strong)ESCLocationManager* locationManager;
 
@@ -42,6 +42,7 @@
     self.mapView = mapView;
     [self.view addSubview:self.mapView];
     self.mapView.frame = self.view.bounds;
+    self.mapView.delegate = self;
     
     MKCoordinateRegion region = self.mapView.region;
     region.span.longitudeDelta = 0.5;
@@ -55,6 +56,22 @@
     CLLocation *location = locations.firstObject;
     CLLocationCoordinate2D coor = location.coordinate;
     [self.mapView setCenterCoordinate:coor animated:YES];
+}
+
+#pragma mark - MKMapViewDelegate
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    DLog(@"%@",view);
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(nonnull MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState {
+    DLog(@"%@",view);
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = touches.anyObject;
+    CGPoint point = [touch locationInView:self.mapView];
+    CLLocationCoordinate2D coor = [self.mapView convertPoint:point toCoordinateFromView:self.view];
+    NSLog(@"%lf===%lf",coor.latitude,coor.longitude);
 }
 
 @end
