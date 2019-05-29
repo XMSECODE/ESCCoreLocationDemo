@@ -64,16 +64,16 @@
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     MKPinAnnotationView *pinView = nil;
     
-//    static NSString *defaultPinID = @"com.invasivecode.pin";
-//    pinView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
-//    if ( pinView == nil ) pinView = [[MKPinAnnotationView alloc]
-//                                      initWithAnnotation:annotation reuseIdentifier:defaultPinID];
-//    pinView.pinColor = MKPinAnnotationColorRed;
-//    pinView.canShowCallout = YES;
-//    pinView.animatesDrop = YES;
-//    [mapView.userLocation setTitle:@"欧陆经典"];
-//    [mapView.userLocation setSubtitle:@"vsp"];
-//    return pinView;
+    static NSString *defaultPinID = @"com.invasivecode.pin";
+    pinView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
+    if ( pinView == nil ) pinView = [[MKPinAnnotationView alloc]
+                                      initWithAnnotation:annotation reuseIdentifier:defaultPinID];
+    pinView.pinColor = MKPinAnnotationColorRed;
+    pinView.canShowCallout = YES;
+    pinView.animatesDrop = YES;
+    [mapView.userLocation setTitle:@"欧陆经典"];
+    [mapView.userLocation setSubtitle:@"vsp"];
+    return pinView;
     
     // 判断是否是当前自定义的大头针类
     if ([annotation isKindOfClass:[ESCAnnonation class]]) {
