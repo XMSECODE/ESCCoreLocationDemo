@@ -24,8 +24,5 @@
     return self;
 }
 
-- (void)setCoordinate:(CLLocationCoordinate2D)newCoordinate NS_AVAILABLE(10_9, 4_0) {
-    
-}
 
 @end

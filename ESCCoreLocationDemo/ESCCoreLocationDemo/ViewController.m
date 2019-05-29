@@ -60,10 +60,21 @@
 }
 
 #pragma mark - MKMapViewDelegate
-- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
-    DLog(@"%@",view);
-}
+
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    MKPinAnnotationView *pinView = nil;
+    
+//    static NSString *defaultPinID = @"com.invasivecode.pin";
+//    pinView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
+//    if ( pinView == nil ) pinView = [[MKPinAnnotationView alloc]
+//                                      initWithAnnotation:annotation reuseIdentifier:defaultPinID];
+//    pinView.pinColor = MKPinAnnotationColorRed;
+//    pinView.canShowCallout = YES;
+//    pinView.animatesDrop = YES;
+//    [mapView.userLocation setTitle:@"欧陆经典"];
+//    [mapView.userLocation setSubtitle:@"vsp"];
+//    return pinView;
+    
     // 判断是否是当前自定义的大头针类
     if ([annotation isKindOfClass:[ESCAnnonation class]]) {
         // 先定义一个重用标识
@@ -89,15 +100,12 @@
     }
 }
 
-- (void)mapView:(MKMapView *)mapView annotationView:(nonnull MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState {
-    DLog(@"%@",view);
-}
-
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     UITouch *touch = touches.anyObject;
     CGPoint point = [touch locationInView:self.mapView];
     CLLocationCoordinate2D coor = [self.mapView convertPoint:point toCoordinateFromView:self.view];
     NSLog(@"%lf===%lf",coor.latitude,coor.longitude);
+    NSLog(@"%@",[NSThread currentThread]);
     //添加大头针
     ESCAnnonation *annonation = [[ESCAnnonation alloc] init];
     annonation.coordinate = coor;
