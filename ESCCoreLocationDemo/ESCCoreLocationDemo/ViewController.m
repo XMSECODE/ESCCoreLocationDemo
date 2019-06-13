@@ -11,6 +11,7 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "ESCAnnonation.h"
+#import "JZLocationConverter.h"
 
 
 #ifdef DEBUG
@@ -44,10 +45,12 @@
     [self.view addSubview:self.mapView];
     self.mapView.frame = self.view.bounds;
     self.mapView.delegate = self;
+    self.mapView.showsUserLocation = YES;
+    
     
     MKCoordinateRegion region = self.mapView.region;
-    region.span.longitudeDelta = 0.05;
-    region.span.latitudeDelta = 0.05;
+    region.span.longitudeDelta = 0.000005;
+    region.span.latitudeDelta = 0.000005;
     [self.mapView setRegion:region animated:YES];
     
 }
@@ -56,6 +59,12 @@
 - (void)locationManager:(ESCLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     CLLocation *location = locations.firstObject;
     CLLocationCoordinate2D coor = location.coordinate;
+    //添加大头针
+    //坐标转换
+    coor = [JZLocationConverter wgs84ToGcj02:coor];
+    ESCAnnonation *annonation = [[ESCAnnonation alloc] init];
+    annonation.coordinate = coor;
+    [self.mapView addAnnotation:annonation];
     [self.mapView setCenterCoordinate:coor animated:YES];
 }
 
@@ -106,10 +115,7 @@
     CLLocationCoordinate2D coor = [self.mapView convertPoint:point toCoordinateFromView:self.view];
     NSLog(@"%lf===%lf",coor.latitude,coor.longitude);
     NSLog(@"%@",[NSThread currentThread]);
-    //添加大头针
-    ESCAnnonation *annonation = [[ESCAnnonation alloc] init];
-    annonation.coordinate = coor;
-    [self.mapView addAnnotation:annonation];
+    
     
     
 }

@@ -15,6 +15,7 @@
 		F075C9FE22977F230041B103 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F075C9FD22977F230041B103 /* main.m */; };
 		F075CA06229788F20041B103 /* ESCLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F075CA05229788F20041B103 /* ESCLocationManager.m */; };
 		F075CA0B2297D9010041B103 /* ESCAnnonation.m in Sources */ = {isa = PBXBuildFile; fileRef = F075CA0A2297D9010041B103 /* ESCAnnonation.m */; };
+		F07C6D5622B219E30033CA85 /* JZLocationConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = F07C6D5422B219E30033CA85 /* JZLocationConverter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		F075CA05229788F20041B103 /* ESCLocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESCLocationManager.m; sourceTree = "<group>"; };
 		F075CA092297D9010041B103 /* ESCAnnonation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESCAnnonation.h; sourceTree = "<group>"; };
 		F075CA0A2297D9010041B103 /* ESCAnnonation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESCAnnonation.m; sourceTree = "<group>"; };
+		F07C6D5422B219E30033CA85 /* JZLocationConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZLocationConverter.m; sourceTree = "<group>"; };
+		F07C6D5522B219E30033CA85 /* JZLocationConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZLocationConverter.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +67,7 @@
 		F075C9ED22977F160041B103 /* ESCCoreLocationDemo */ = {
 			isa = PBXGroup;
 			children = (
+				F07C6D5322B219E30033CA85 /* JZLocationConverter */,
 				F075C9EE22977F160041B103 /* AppDelegate.h */,
 				F075C9EF22977F160041B103 /* AppDelegate.m */,
 				F075C9F122977F160041B103 /* ViewController.h */,
@@ -79,6 +83,15 @@
 				F075C9FD22977F230041B103 /* main.m */,
 			);
 			path = ESCCoreLocationDemo;
+			sourceTree = "<group>";
+		};
+		F07C6D5322B219E30033CA85 /* JZLocationConverter */ = {
+			isa = PBXGroup;
+			children = (
+				F07C6D5422B219E30033CA85 /* JZLocationConverter.m */,
+				F07C6D5522B219E30033CA85 /* JZLocationConverter.h */,
+			);
+			path = JZLocationConverter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +169,7 @@
 				F075C9FE22977F230041B103 /* main.m in Sources */,
 				F075CA06229788F20041B103 /* ESCLocationManager.m in Sources */,
 				F075C9F022977F160041B103 /* AppDelegate.m in Sources */,
+				F07C6D5622B219E30033CA85 /* JZLocationConverter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
